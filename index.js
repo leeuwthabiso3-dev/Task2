@@ -246,8 +246,68 @@ const totalPhones = developers.reduce((sum, developer) => sum + developer.phones
 console.log(totalPhones);
 
 // Count how many values are missing/falsy
-const zeroCount = developers.reduce((count, obj) => {
+const computerSetups = developers.flatMap(developer => developer.computerSetups);
+const zeroCount = computerSetups.reduce((count, obj) => {
   return count + Object.values(obj).filter(value => value === 0).length;
-}, 1);
+}, 0);
 
 console.log(zeroCount);
+
+//Most trusted phone brand among developers
+const phoneBrands = developers.flatMap(developer => developer.phones);
+const phoneBrandCount = phoneBrands.reduce((count, brand) => {
+  count[brand] = (count[brand] || 0) + 1;
+  return count;
+}, {});
+const mostTrustedPhoneBrand = Object.keys(phoneBrandCount).reduce((a, b) => phoneBrandCount[a] > phoneBrandCount[b] ? a : b);
+console.log(mostTrustedPhoneBrand);
+
+//Least trusted phone brand among developers
+const leastTrustedPhoneBrand = Object.keys(phoneBrandCount).reduce((a, b) => phoneBrandCount[a] < phoneBrandCount[b] ? a : b);
+console.log(leastTrustedPhoneBrand);
+
+//How many people do not have a phone
+const peopleWithoutPhone = developers.filter(developer => developer.phones.length === 0).length;
+console.log(peopleWithoutPhone);
+
+//How many people do not have a laptop
+const peopleWithoutLaptop = developers.filter(developer => developer.laptops.length === 0).length;
+console.log(peopleWithoutLaptop);
+
+//How many people do not have a computer setup
+const peopleWithoutComputerSetup = developers.filter(developer => developer.computerSetups.length === 0).length;
+console.log(peopleWithoutComputerSetup);
+
+//Which developer has the most gadgets (laptops, phones, computer setups)
+const developerWithMostGadgets = developers.reduce((maxDeveloper, currentDeveloper) => {
+  const maxGadgets = maxDeveloper.laptops.length + maxDeveloper.phones.length + maxDeveloper.computerSetups.length;
+  const currentGadgets = currentDeveloper.laptops.length + currentDeveloper.phones.length + currentDeveloper.computerSetups.length;
+  return currentGadgets > maxGadgets ? currentDeveloper : maxDeveloper;
+});
+console.log(developerWithMostGadgets.name);
+console.log("Computer Setups:", developerWithMostGadgets.computerSetups);
+console.log("Laptops: ",developerWithMostGadgets.laptops)
+console.log("Phones: ",developerWithMostGadgets.phones)
+
+//Developer with most phones
+const developerWithMostPhones = developers.reduce((maxDeveloper, currentDeveloper) => {
+  return currentDeveloper.phones.length > maxDeveloper.phones.length ? currentDeveloper : maxDeveloper;
+});
+console.log(developerWithMostPhones.name);
+console.log("Phones: ", developerWithMostPhones.phones);
+
+//Developer with most computer setups
+const developerWithMostComputerSetups = developers.reduce((maxDeveloper, currentDeveloper) => {
+  return currentDeveloper.computerSetups.length > maxDeveloper.computerSetups.length ? currentDeveloper : maxDeveloper;
+});
+console.log(developerWithMostComputerSetups.name);
+console.log("Computer Setups: ", developerWithMostComputerSetups.computerSetups);
+
+//Developer with most monitors
+const developerWithMostMonitors = developers.reduce((maxDeveloper, currentDeveloper) => {
+  const maxMonitors = maxDeveloper.computerSetups.reduce((sum, setup) => sum + setup.monitors, 0);
+  const currentMonitors = currentDeveloper.computerSetups.reduce((sum, setup) => sum + setup.monitors, 0);
+  return currentMonitors > maxMonitors ? currentDeveloper : maxDeveloper;
+});
+console.log(developerWithMostMonitors.name);
+console.log("Monitors: ", developerWithMostMonitors.computerSetups.reduce((sum, setup) => sum + setup.monitors, 0));
