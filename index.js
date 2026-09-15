@@ -8,56 +8,119 @@ const numbers = [ 3, 56, 23, 78, 23, 78, 100, 123,
 numbers.sort((a, b) => a - b);
 console.log(numbers)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //highest to lowest
 numbers.sort((a, b) => b - a);
 console.log(numbers)
 
+
+//creating space between the outputs
+console.log("")
+
+
 numbers.sort((a, b) => a - b);
 console.log(numbers)
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Unique values
 const uniqueNumbers = [...new Set(numbers)];
 console.log(uniqueNumbers)  
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Sum of all numbers
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 console.log(sum)
+
+
+//creating space between the outputs
+console.log("")
+
 
 //< or = 100
 const filteredNumbers = numbers.filter(num => num <= 100);
 console.log(filteredNumbers)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //> than 50
 const greaterThanFifty = numbers.filter(num => num > 50);
 console.log(greaterThanFifty)
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Numbers divisible by 2
 const divisibleByTwo = numbers.filter(num => num % 2 === 0);
 console.log(divisibleByTwo)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Numbers divisible by 3
 const divisibleByThree = numbers.filter(num => num % 3 === 0);
-console.log(divisibleByThree)   
+console.log(divisibleByThree)  
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Neither divisible by 2 nor 3
 const number = numbers.filter(num => num % 2 !== 0 && num % 3 !== 0);
 console.log(number)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Number of elements in the array
 const numberOfElements = numbers.length;
-console.log(numberOfElements)   
+console.log(numberOfElements)  
+
+
+//creating space between the outputs
+console.log("")
+
 
 //New array same elements but in reverse order
 const reversedArray = [...numbers].reverse();
 console.log(reversedArray)
 
 
-const info = [7, 10, "Clentan", 13, 89, true, 45, false, "Jerry", "Vukona", "Reabetswe", 600]
+//creating space between the outputs
+console.log("")
 
-//const numbersOnly = info.filter(item => typeof item === 'number');
-//const numbersOnly = info.filter(item => typeof item === 'string');
 
-//For loopeturning values that are numbers only from the array
+//Random array
+const info = [
+  7, 10, "Clentan", 13, 89, true, 45, 
+  false, "Jerry", "Vukona", "Reabetswe", 600
+]
+
+/*const numbersOnly = info.filter(item => typeof item === 'number');
+const numbersOnly = info.filter(item => typeof item === 'string');*/
+
+//For loop returning values that are numbers only from the array
 const numbersOnly = [];
 for (let i = 0; i < info.length; i++) {
     if (typeof info[i] === 'number') {
@@ -65,6 +128,11 @@ for (let i = 0; i < info.length; i++) {
     }
 }
 console.log(numbersOnly)
+
+
+//creating space between the outputs
+console.log("")
+
 
 //While loopeturning values that are strings only from the array
 const stringsOnly = [];
@@ -77,6 +145,11 @@ while (i < info.length) {
 }
 console.log(stringsOnly)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Do while loop returning sum of all numbers in the array
 let total = 0;
 let j = 0;
@@ -86,12 +159,22 @@ do{
 }while(j < numbersOnly.length);
 console.log(total)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Loop combining all strings in array
 let combinedString = "Hello ";
 for (let k = 0; k < stringsOnly.length; k++) {
     combinedString += stringsOnly[k] + " ";
 }
 console.log(combinedString)
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Removing all strings in array
 let l = 0;
@@ -104,6 +187,12 @@ while (l < info.length) {
 }
 console.log(info)
 
+
+//creating space between the outputs
+console.log("")
+
+
+//Array of objects containing developers and their gadgets
 const developers = [
   {
     name: "Vee",
@@ -124,6 +213,7 @@ const developers = [
       }
     ]
   },
+
   {
     name: "Katlego",
     laptops: [
@@ -153,6 +243,7 @@ const developers = [
       }
     ]
   },
+
   {
     name: "Rethabile",
     laptops: [
@@ -180,6 +271,7 @@ const developers = [
       }
     ]
   },
+
   {
     name: "Gift",
     laptops: [],
@@ -203,6 +295,7 @@ const developers = [
       }
     ]
   },
+
   {
     name: "Thokozile",
     laptops: [
@@ -241,17 +334,31 @@ const developers = [
 const namesOnly = developers.map(developer => developer.name);
 console.log(namesOnly); 
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Total phones owned by all developers
 const totalPhones = developers.reduce((sum, developer) => sum + developer.phones.length, 0);
 console.log(totalPhones);
+
+
+//creating space between the outputs
+console.log("")
+
 
 // Count how many values are missing/falsy
 const computerSetups = developers.flatMap(developer => developer.computerSetups);
 const zeroCount = computerSetups.reduce((count, obj) => {
   return count + Object.values(obj).filter(value => value === 0).length;
 }, 0);
-
 console.log(zeroCount);
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Most trusted phone brand among developers
 const phoneBrands = developers.flatMap(developer => developer.phones);
@@ -262,21 +369,47 @@ const phoneBrandCount = phoneBrands.reduce((count, brand) => {
 const mostTrustedPhoneBrand = Object.keys(phoneBrandCount).reduce((a, b) => phoneBrandCount[a] > phoneBrandCount[b] ? a : b);
 console.log(mostTrustedPhoneBrand);
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Least trusted phone brand among developers
 const leastTrustedPhoneBrand = Object.keys(phoneBrandCount).reduce((a, b) => phoneBrandCount[a] < phoneBrandCount[b] ? a : b);
 console.log(leastTrustedPhoneBrand);
+
+
+//creating space between the outputs
+console.log("")
+
 
 //How many people do not have a phone
 const peopleWithoutPhone = developers.filter(developer => developer.phones.length === 0).length;
 console.log(peopleWithoutPhone);
 
+
+//creating space between the outputs
+console.log("")
+
+
 //How many people do not have a laptop
 const peopleWithoutLaptop = developers.filter(developer => developer.laptops.length === 0).length;
 console.log(peopleWithoutLaptop);
 
+
+//creating space between the outputs
+console.log("")
+
+
 //How many people do not have a computer setup
 const peopleWithoutComputerSetup = developers.filter(developer => developer.computerSetups.length === 0).length;
 console.log(peopleWithoutComputerSetup);
+
+
+//creating space between the outputs
+console.log("")
+
+
 
 //Which developer has the most gadgets (laptops, phones, computer setups)
 const developerWithMostGadgets = developers.reduce((maxDeveloper, currentDeveloper) => {
@@ -289,6 +422,11 @@ console.log("Computer Setups:", developerWithMostGadgets.computerSetups);
 console.log("Laptops: ",developerWithMostGadgets.laptops)
 console.log("Phones: ",developerWithMostGadgets.phones)
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Developer with most phones
 const developerWithMostPhones = developers.reduce((maxDeveloper, currentDeveloper) => {
   return currentDeveloper.phones.length > maxDeveloper.phones.length ? currentDeveloper : maxDeveloper;
@@ -296,12 +434,22 @@ const developerWithMostPhones = developers.reduce((maxDeveloper, currentDevelope
 console.log(developerWithMostPhones.name);
 console.log("Phones: ", developerWithMostPhones.phones);
 
+
+//creating space between the outputs
+console.log("")
+
+
 //Developer with most computer setups
 const developerWithMostComputerSetups = developers.reduce((maxDeveloper, currentDeveloper) => {
   return currentDeveloper.computerSetups.length > maxDeveloper.computerSetups.length ? currentDeveloper : maxDeveloper;
 });
 console.log(developerWithMostComputerSetups.name);
 console.log("Computer Setups: ", developerWithMostComputerSetups.computerSetups);
+
+
+//creating space between the outputs
+console.log("")
+
 
 //Developer with most monitors
 const developerWithMostMonitors = developers.reduce((maxDeveloper, currentDeveloper) => {
